@@ -1,11 +1,16 @@
 import { db } from '../../db'
 
-const verifyUser = async (email: string) => {
+const getUserByEmail = async (email: string) => {
     const user = await db.user.findUnique({ where: { email }})
 
-    return user
+    if (user) {
+        const { email, key, name } = user
+        return { email, key, name }
+    }
+
+    return null
 }
 
 export default {
-    verifyUser
+    getUserByEmail
 }
