@@ -1,5 +1,5 @@
 import authRouter from './auth'
 
-export {
+export default {
     authRouter
 }

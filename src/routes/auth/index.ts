@@ -4,9 +4,15 @@ import { middlewareAuth } from '../../middlewares'
 
 const authRouter = Router()
 
-authRouter.post('/', 
+authRouter.post('/login', 
+    middlewareAuth.verifyEmailNotExist,
     middlewareAuth.verifyPassword,
     auth.login
+)
+
+authRouter.post('/register',
+    middlewareAuth.verifyEmailExist,
+    auth.register
 )
 
 export default authRouter

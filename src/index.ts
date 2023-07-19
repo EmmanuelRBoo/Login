@@ -1,7 +1,7 @@
 import Express from 'express'
 import Cors from 'cors'
 
-import { authRouter } from './routes'
+import routes from './routes'
 
 require('dotenv').config()
 
@@ -11,6 +11,6 @@ const port = process.env.PORT
 app.use(Express.json())
 app.use(Cors())
 
-app.use('/login', authRouter)
+app.use('/', routes.authRouter)
 
 app.listen(port)
